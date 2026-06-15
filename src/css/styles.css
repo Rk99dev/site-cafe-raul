@@ -1,0 +1,688 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('../css/variables.css');
+@import url('../css/navbar.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+#container {
+    background-image: url('../img/background-mobile.png');
+    background-size: contain;
+
+}
+
+.title {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    color: var(--color-neutral-8);
+    font-weight: 700;
+    position: relative;
+
+    &::before {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 4px;
+        background-color: var(--color-primary-1);
+        position: absolute;
+        bottom: 0;
+        border-radius: 30px;
+    }
+}
+
+a.btn {
+    text-decoration: none;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.btn-mobile {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.btn-mobile span {
+    display: block;
+    position: absolute;
+    left: 8px;
+    width: 24px;
+    height: 3px;
+    background-color: #333;
+    border-radius: 999px;
+    transition: all 0.3s ease;
+}
+
+.btn-mobile span:nth-child(1) {
+    top: 10px;
+}
+
+.btn-mobile span:nth-child(2) {
+    top: 18px;
+}
+
+.btn-mobile span:nth-child(3) {
+    top: 26px;
+}
+
+.btn-mobile.active span:nth-child(1) {
+    top: 18px;
+    transform: rotate(45deg);
+}
+
+.btn-mobile.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.btn-mobile.active span:nth-child(3) {
+    top: 18px;
+    transform: rotate(-45deg);
+}
+
+.btn-default {
+    background: linear-gradient(135deg, #6b3e26, #a47148);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* vapor */
+.btn-default::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    width: 120%;
+    height: 200%;
+    transform: translateX(-50%);
+
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, transparent 70%);
+
+    opacity: 0;
+    filter: blur(8px);
+}
+
+/* animação do vapor */
+.btn-default:hover::after {
+    animation: vapor 1.5s ease-out forwards;
+}
+
+@keyframes vapor {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 0) scale(1);
+    }
+
+    30% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -60px) scale(1.3);
+    }
+}
+
+/* interação do botão */
+.btn-default:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.btn-outlined {
+    background: linear-gradient(135deg, #2e7d32, #66bb6a);
+    /* verde */
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* vapor verde suave */
+.btn-outlined::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    width: 120%;
+    height: 200%;
+    transform: translateX(-50%);
+
+    background: radial-gradient(circle, rgba(200, 255, 200, 0.25) 0%, transparent 70%);
+
+    opacity: 0;
+    filter: blur(8px);
+}
+
+/* animação do vapor */
+.btn-outlined:hover::after {
+    animation: vaporGreen 1.5s ease-out forwards;
+}
+
+@keyframes vaporGreen {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 0) scale(1);
+    }
+
+    30% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -60px) scale(1.3);
+    }
+}
+
+/* hover do botão */
+.btn-outlined:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(46, 125, 50, 0.4);
+    background: linear-gradient(135deg, #1b5e20, #43a047);
+}
+
+
+#home {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    min-height: calc(100vh - 96px);
+    padding: 32px 4%;
+    padding-top: clamp(0px, 5vw, 32px);
+
+    .home-image {
+        width: clamp(300px, 50%, 400px);
+    }
+
+    .home-title {
+        color: var(--color-neutral-8);
+        text-align: center;
+        font-size: clamp(3rem, 5vw, 4.5rem);
+        text-transform: uppercase;
+        line-height: 1.2;
+        max-width: 700px;
+        margin-top: 2rem;
+
+        span {
+            color: var(--color-primary-1);
+        }
+    }
+
+    .home-description {
+        color: var(--color-neutral-9);
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 500;
+        max-width: 600px;
+    }
+
+    .home-actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 12px;
+    }
+}
+
+#trending {
+    padding: 32px 4%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    min-height: calc(100vh - 96px);
+
+    .trending-cards {
+        .trending-card {
+            position: relative;
+
+            img {
+                width: clamp(300px, 5vw, 600px);
+            }
+
+            .trending-rate {
+                background-color: var(--color-neutral-0);
+                position: absolute;
+                bottom: 70px;
+                right: 30px;
+                padding: 5px 10px;
+                border-radius: 5px;
+                cursor: pointer;
+
+                i {
+                    color: var(--color-secondary-1);
+                }
+            }
+
+            .trending-card-description {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                font-size: 1.3rem;
+                font-weight: 600;
+                color: var(--color-neutral-8);
+
+                span {
+                    font-size: 1rem;
+                    font-weight: 500;
+                    color: var(--color-neutral-7);
+                }
+            }
+        }
+    }
+}
+
+#about {
+    padding: 32px 4%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-primary-1);
+    background-image: url('../img/about/bg-about.png');
+    min-height: calc(100vh - 96px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 32px;
+
+    .title {
+        color: var(--color-neutral-0);
+
+        &::before {
+            background-color: var(--color-secondary-1);
+        }
+    }
+
+    .about-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+
+        .about-image {
+            width: clamp(300px, 50vw, 500px);
+        }
+
+        .about-info {
+            padding: 24px;
+            border-radius: 20px;
+            background-color: var(--color-primary-2);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+            h3 {
+                color: var(--color-neutral-0);
+                font-size: 1.8rem;
+                margin-bottom: 4px;
+
+                span {
+                    color: var(--color-secondary-1);
+                }
+            }
+
+            p {
+                color: var(--color-neutral-0);
+                font-size: 1rem;
+
+                span {
+                    color: var(--color-secondary-1);
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}
+
+#products {
+    padding: 32px 4%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 58px;
+
+    .product-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--color-primary-1);
+        background-image: url('../img/products/background.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding: 16px;
+        border-radius: 50px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        img {
+            width: 300px;
+            position: relative;
+            top: -70px;
+            filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+        }
+
+        .product-content {
+            margin-top: -70px;
+
+            h3 {
+                color: var(--color-neutral-0);
+                font-size: 1.8rem;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+
+                span {
+                    color: var(--color-secondary-1);
+                    font-size: 1.2rem;
+                }
+
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    #container {
+        background-image: url('../img/background-desktop.png');
+        background-size: cover;
+        background-position: start;
+        background-repeat: no-repeat;
+    }
+
+    #trending {
+        .trending-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+    }
+
+    #products {
+        min-height: 100vh;
+        gap: 8rem;
+
+        .product-card {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+
+            .product-card {
+                img {
+                    width: 250px;
+                }
+            }
+        }
+    }
+
+
+}
+
+footer {
+    background-color: var(--color-primary-1);
+    color: var(--color-neutral-0);
+    text-align: center;
+    padding: 12px;
+}
+
+@media (min-width: 1200px) {
+    #about {
+        margin: 4%;
+        justify-content: center;
+
+        .about-content {
+            flex-direction: row;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .about-image {
+            order: 1;
+        }
+
+        .about-info:first-child {
+            order: 2;
+        }
+
+        .about-info:last-child {
+            order: 3;
+        }
+    }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-in-out;
+}
+
+/* Estado ativo (visível e na posição original) */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.Novidades {
+    /* Estilo da fonte */
+    font-family: 'Pacifico', cursive;
+    font-size: 4rem;
+    text-align: center;
+    margin: 20px 0;
+
+    /* Criando o gradiente com as cores de café */
+    background: linear-gradient(45deg,
+            #3E2723,
+            /* Expresso escuro */
+            #8D6E63,
+            /* Chocolate / Mocha */
+            #34815d,
+            /* Espuma do leite */
+            #5D4037
+            /* Grão de café torrado */
+        );
+    background-size: 300% 300%;
+
+    /* Aplicando o gradiente apenas ao texto */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+
+    /* Adicionando uma sombra suave para dar profundidade */
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+
+    /* Chamando as animações */
+    animation: misturarCafe 6s ease infinite, flutuarAroma 3s ease-in-out infinite;
+}
+
+/* Animação 1: Movimenta o gradiente como se o café e o leite estivessem se misturando */
+@keyframes misturarCafe {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Animação 2: Faz o texto flutuar levemente, lembrando a fumaça quente do café */
+@keyframes flutuarAroma {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Estilo padrão para Computadores */
+.btn-whatsapp {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background-color: #25d366;
+    /* Cor oficial do WhatsApp */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    /* Garante que fique por cima de tudo */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+}
+
+/* Efeito ao passar o mouse */
+.btn-whatsapp:hover {
+    transform: scale(1.5);
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+/* Responsividade para Celulares */
+@media (max-width: 768px) {
+
+    .btn-whatsapp {
+        bottom: 15px;
+        /* Fica um pouco mais próximo da borda */
+        right: 15px;
+        width: 50px;
+        /* Botão um pouco menor na tela do celular */
+        height: 50px;
+    }
+}
+
+.btn-whatsapp svg {
+    width: 28px;
+    height: 28px;
+}
+
+.coffee-footer {
+    background-color: #2c1e16;
+    /* Marrom escuro profundo (Espresso) */
+    color: #f4e8d8;
+    /* Bege claro (Creme) */
+    padding: 60px 20px 40px;
+    text-align: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Container dos ícones */
+.social-icons {
+    margin-bottom: 30px;
+}
+
+/* Estilo individual de cada ícone (círculos brancos/bejes) */
+.social-icons .icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    background-color: #f4e8d8;
+    /* Fundo do ícone claro */
+    color: #2c1e16;
+    /* Ícone na cor do fundo do footer */
+    border-radius: 50%;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Efeito ao passar o mouse por cima dos ícones */
+.social-icons .icon:hover {
+    background-color: #d4a373;
+    /* Tom de caramelo no hover */
+    transform: translateY(-3px);
+}
+
+/* Links de navegação principais (Cardápio, Contato, etc) */
+.footer-links {
+    margin-bottom: 15px;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+
+.footer-links a {
+    color: #f4e8d8;
+    text-decoration: none;
+    margin: 0 8px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #d4a373;
+    /* Tom de caramelo no hover */
+}
+
+/* Links secundários (Termos, Privacidade) - menores e com menos opacidade */
+.footer-links.secondary {
+    font-size: 13px;
+    opacity: 0.8;
+    margin-bottom: 25px;
+}
+
+/* Texto de Copyright */
+.copyright {
+    font-size: 12px;
+    opacity: 0.6;
+    letter-spacing: 0.5px;
+}
+
+.Local {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2.2rem;
+    font-family: Poppins, sans-serif;
+    color: var(--color-primary-1);
+}
+
+/* Centraliza o mapa na tela e aplica o formato arredondado na caixa */
+.container-map {
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    /* Altere o valor para deixar mais ou menos redondo */
+    overflow: hidden;
+    /* O segredo: isso corta as pontas quadradas do iframe! */
+    margin: 0 auto;
+    max-width: 600px;
+    /* Garante que a caixa não passe do tamanho do seu mapa */
+}
+
+/* Remove a barreira do iframe */
+.container-map iframe {
+    border: none;
+}
